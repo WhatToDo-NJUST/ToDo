@@ -1,12 +1,12 @@
 package com.njust.todo.fragments.list;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.njust.todo.R;
 
@@ -61,6 +61,13 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        View view =  inflater.inflate(R.layout.fragment_list, container, false);
+        view.findViewById(R.id.floatingActionButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_listFragment_to_addFragment);
+            }
+        });
+        return view;
     }
 }
