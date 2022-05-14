@@ -2,9 +2,12 @@ package com.njust.todo.fragments.list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -68,6 +71,18 @@ public class ListFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_listFragment_to_addFragment);
             }
         });
+        view.findViewById(R.id.listLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_listFragment_to_updateFragment);
+            }
+        });
+        setHasOptionsMenu(true);
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.list_fragment_menu,menu);
     }
 }
